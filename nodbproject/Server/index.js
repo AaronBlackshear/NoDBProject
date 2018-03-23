@@ -1,15 +1,15 @@
 const express = require('express');
-const bodyParser = require('body-parser')
-const app = express('');
+const { json } = require('body-parser')
+const app = express();
 const port = 3001;
 
-app.use(bodyParser.json());
+app.use(json());
 
-const ctrlPlayers = require('./controllers/control-players');
+const ctrlPlaylists = require("./controllers/control_playlists");
 
-app.get('/api/player/', ctrlPlayers.getPlayers);
-// app.post('/api/player', ctrlPlayers.postPlayers);
+app.get("/api/playlists", ctrlPlaylists.getPlaylists);
+// app.post('/api/playlists', ctrlPlaylists.postPlaylists);
 // app.put('/api/player?=unique_id', ctrlPlayers.putPlayers);
 // app.delete('/api/player', ctrlPlayers.deletePlayers);
 
-app.listen(port, () => console.log(`Port ${port} is listening!`))
+app.listen(port, () => console.log(`Listening on port ${port}`))
