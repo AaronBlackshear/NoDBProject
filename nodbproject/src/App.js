@@ -23,13 +23,15 @@ class App extends Component {
 
   addToFavorites(id,platform){
     axios.put('/api/playlists', {platformId: platform, id})
-    .then(res => this.setState({favorites: res.data}))
-    console.log(this.state.favorites)
-    console.log(this.state.playlists)
+    .then(res => {
+      this.setState({favorites: res.data[0], playlists: res.data[1]})
+    });
+    
   }
 
   render() {
-    const { playlists } = this.state;
+    const { playlists,favorites } = this.state;
+    console.log(favorites,playlists)
     return (
       <div>
         <Header array={playlists} />

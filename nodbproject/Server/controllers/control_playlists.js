@@ -22,10 +22,10 @@ module.exports = {
         const { platformId,id } = req.body
         playlist.forEach((cur,ind) => {
             if(cur.platformId === platformId && cur.id === id){
-                return favorites.push(playlist.splice(ind,1))
+                favorites.push(playlist.splice(ind,1))
             }
         });
-        res.status(200).send(favorites);
+        res.status(200).send([favorites, playlist]);
     }
 }
 
