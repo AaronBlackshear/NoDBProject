@@ -3,7 +3,7 @@ import axios from 'axios';
 import Create from './components/Create';
 import Header from './components/Header';
 import ListContainer from './components/ListContainer';
-import Favorites from './components/Favorites';
+import FavoritesContainer from './components/FavoritesContainer';
 
 
 class App extends Component {
@@ -26,17 +26,17 @@ class App extends Component {
     .then(res => {
       this.setState({favorites: res.data[0], playlists: res.data[1]})
     });
+
     
   }
 
   render() {
     const { playlists,favorites } = this.state;
-    console.log(favorites,playlists)
     return (
       <div>
         <Header array={playlists} />
         <ListContainer array={playlists} favorite={this.addToFavorites} />
-        <Favorites array={playlists} />
+        <FavoritesContainer favorites={favorites} />
         <Create array={playlists} />
       </div>
     );
