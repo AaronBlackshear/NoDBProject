@@ -1,0 +1,10 @@
+.header{
+    position: relative;
+    margin: 0 15vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+    border-bottom: 1px solid black;
+}

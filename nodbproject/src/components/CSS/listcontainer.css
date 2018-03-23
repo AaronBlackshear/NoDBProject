@@ -1,0 +1,9 @@
+*{
+    box-sizing: border-box;
+}
+
+.listContainer{
+    width: 69vw;
+    position: relative;
+    left: 15vw;
+}

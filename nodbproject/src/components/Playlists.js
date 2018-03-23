@@ -7,35 +7,16 @@ export default class Playlists extends Component{
     }
 
     render(){
-        const { array } = this.props;
-
-        let test = array.map((cur,ind) => {
-            if(cur.platformId === 1){
-                return <div className="playlistBox" key={ind}>
-                    <h3>Playlist: {cur.name}</h3>
-                    <h3>Platform: XBOX One</h3>
-                    <h3>Population: {cur.population.players}</h3>
-                </div>
-            }
-            else if(cur.platformId === 2){
-                return <div className="playlistBox" key={ind}>
-                    <h3>Playlist: {cur.name}</h3>
-                    <h3>Platform: Play Station 4</h3>
-                    <h3>Population: {cur.population.players}</h3>
-                </div>
-            }
-            else{
-                return <div className="playlistBox" key={ind}>
-                <h3>Playlist: {cur.name}</h3>
-                <h3>Platform: Steam</h3>
-                <h3>Population: {cur.population.players}</h3>
-            </div>
-            }
-        })
+        const { name,population,platformName,platformId,id,favorite } = this.props;
 
         return (
-            <div className="Flex-Box">
-                {test}
+            <div>
+                <div className="playlistBox">
+                    <h3>Playlist: {name}</h3>
+                    <h3>Platform: {platformName}</h3>
+                    <h3>Population: {population}</h3>
+                    <button onClick={() => favorite(id,platformId)}>Add To Favorites</button>
+                </div>
             </div>
         )
     }

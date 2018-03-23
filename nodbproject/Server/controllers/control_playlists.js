@@ -1,14 +1,31 @@
 const axios = require('axios');
 
+let playlist = [];
+let favorites = [];
+
 module.exports = {
     getPlaylists: (req, res) => {
-        axios
-        .get('https://api.rocketleaguestats.com/v1/data/playlists/?apikey=YPRYIEEQ6N74M3OM1QLHYDGRP0IH3LV9')
-        .then(response => {
-            res.status(200).json(response.data)})
-        .catch(response => res.status(500).send(response))
+        if(!playlist.length){
+            axios
+            .get(`https://api.rocketleaguestats.com/v1/data/playlists/?apikey=${process.env.API_KEY}`)
+            .then(response => {
+                playlist = response.data
+                res.status(200).json(playlist)
+            })
+            .catch(response => res.status(500).json(response))
+        }
+        else{
+            res.status(200).json(playlist)
+        }
     },
-    // postPlaylists: () => {
-
-    // }
+    postPlaylists: (req,res) => {
+        const { platformId,id } = req.body
+        playlist.forEach((cur,ind) => {
+            if(cur.platformId === platformId && cur.id === id){
+                return favorites.push(playlist.splice(ind,1))
+            }
+        });
+        res.status(200).send(favorites);
+    }
 }
+

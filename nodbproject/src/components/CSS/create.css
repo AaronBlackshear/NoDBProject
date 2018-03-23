@@ -1,0 +1,8 @@
+.create{
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 15vw;
+    height: 100vh;
+    background-color: rgb(27, 27, 27);
+}
