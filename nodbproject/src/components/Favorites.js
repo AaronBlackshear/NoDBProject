@@ -7,15 +7,16 @@ export default class Favorites extends Component{
     }
 
     render(){
-        const { name,population,platformName,platformId,id,favorite } = this.props;
+        const { name,population,platformName,platformId,id,favorite,move } = this.props;
         return (
             
                 <div className="favorites">
                 {!favorite.length ? (<div />) : (
-                    <div>
+                    <div className="fav">
                     <h3>Playlist: {name}</h3>
                     <h3>Platform: {platformName}</h3>
                     <h3>Population: {population.players}</h3>
+                    <button onClick={() => move(id,platformId)}>Remove</button>
                     </div>
                 )}
                 </div>

@@ -10,7 +10,8 @@ const ctrlPlaylists = require("./controllers/control_playlists");
 
 app.get("/api/playlists", ctrlPlaylists.getPlaylists);
 // app.post('/api/playlists', ctrlPlaylists.postPlaylists);
-app.put('/api/playlists', ctrlPlaylists.postPlaylists);
-// app.delete('/api/player', ctrlPlayers.deletePlayers);
+app.put('/api/playlists/:id', ctrlPlaylists.postPlaylists);
+app.post('/api/playlists/:id', ctrlPlaylists.movePlaylists);
+app.delete(`/api/playlists/:id`, ctrlPlaylists.deletePlaylists);
 
 app.listen(port, () => console.log(`Listening on port ${port}`))
