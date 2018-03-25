@@ -41,16 +41,16 @@ module.exports = {
             res.status(200).send([favorites, playlist]);
         })
     },
-    // addPlaylist: (req,res) => {
-
-    // },
+    addPlaylists: (req,res) => {
+        const { playl,platform } = req.body;
+        playlist.push({playl,platform})
+        res.status(200).json(playlist)
+    },
     deletePlaylists: (req,res) => {
-        const { id,platform } = req.params;
-        playlist.map((cur,ind) => {
-            console.log(cur.id,cur.ind)
-        })
-        res.status(500).json(playlist);
-        
+        const { id,platformId } = req.params;
+        var index = playlist.findIndex(list => list.id === parseInt(id) && list.platformId === parseInt(platformId))
+        playlist.splice(index,1)
+        res.status(200).json(playlist);
     }
 }
 

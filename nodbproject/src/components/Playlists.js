@@ -20,7 +20,7 @@ export default class Playlists extends Component{
             <h3>Platform: {platformName}</h3>
             <h3>Population: {population}</h3>
             <button disabled={this.state.button} onClick={() => favorite(id,platformId)}>Add To Favorites</button>
-            <button onClick={() => deleteItem(id)}>Delete</button>
+            <button onClick={() => deleteItem(id,platformId)}>Delete</button>
             </div>
             )
         }
@@ -30,7 +30,7 @@ export default class Playlists extends Component{
                 <h3>Playlist: {name}</h3>
                 <h3>Platform: {platformName}</h3>
                 <h3>Population: {population}</h3>
-                <button onClick={() => deleteItem(1,2)}>Delete</button>
+                <button onClick={() => deleteItem(id,platformId)}>Delete</button>
                 </div>
                 )
         }

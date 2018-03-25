@@ -18,8 +18,9 @@ class App extends Component {
     this.addToFavorites = this.addToFavorites.bind(this);
     this.deleteFromPlaylist = this.deleteFromPlaylist.bind(this);
     this.movePlaylists = this.movePlaylists.bind(this);
-    this.newPlaylist = this.newPlaylist.bind(this);
-    this.newPlatform = this.newPlatform.bind(this);
+    this.addPlaylist = this.addPlaylist.bind(this);
+    this.addPlatform = this.addPlatform.bind(this);
+    this.createPlaylist = this.createPlaylist.bind(this);
   }
 
   componentDidMount(){
@@ -41,19 +42,27 @@ class App extends Component {
     })
   }
 
-  deleteFromPlaylist(id){
-    axios.delete(`/api/playlists/${id}`)
-    // console.log(id,platform)
+  deleteFromPlaylist(id,platformId){
+    axios.delete(`/api/playlists/${id}/${platformId}`)
     .then(res => this.setState({playlists: res.data}))
   }
 
-  newPlaylist(val){
+  createPlaylist(playl,platform){
+    axios.post('/api/playlists', {playl,platform})
+    .then(res => {
+      console.log(res.data);
+      
+      this.setState({playlists: res.data})
+    })
+  }
+
+  addPlaylist(val){
     this.setState({
       newPlaylist: val,
     })
   }
 
-  newPlatform(val){
+  addPlatform(val){
     this.setState({
       newPlatform: val,
     })
@@ -61,13 +70,13 @@ class App extends Component {
 
   render() {
     const { playlists,favorites,newPlatform,newPlaylist } = this.state;
-    console.log(playlists)
     return (
       <div>
-        <Header array={playlists} />
-        <ListContainer array={playlists} favorite={this.addToFavorites} fav={favorites} deleteItem={this.deleteFromPlaylist} />
+        <Header />
+        <ListContainer arr={playlists} favorite={this.addToFavorites} fav={favorites} deleteItem={this.deleteFromPlaylist} />
         <FavoritesContainer favorites={favorites} move={this.movePlaylists} />
-        <Create array={playlists} newPlaylist={this.newPlaylist} newPlatform={this.newPlatform} />
+        <Create arr={playlists} newPlaylist={this.addPlaylist} newPlatform={this.addPlatform}
+         create={this.createPlaylist} playlist={newPlaylist} platform={newPlatform} />
       </div>
     );
   }

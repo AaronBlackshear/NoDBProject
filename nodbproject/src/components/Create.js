@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import './CSS/create.css';
 
-export default function Create(props) {
-    const { newPlaylist,newPlatform } = props;
+export default function Create({ newPlaylist,newPlatform,create,playlist,platform }) {
     return (
         <div className="create">
             <h1 className="create-title">Create<br /> your<br /> own<br /> Playlist!</h1>
@@ -11,7 +10,7 @@ export default function Create(props) {
             <h3>Platform:</h3>
             <input placeholder="Enter Platform Name here..." className="input" onChange={e => newPlatform(e.target.value)} />
             <br />
-            <button>Submit</button>
+            <button onClick={() => create(playlist,platform)}>Submit</button>
         </div>
     )
 }
