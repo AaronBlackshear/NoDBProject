@@ -46,16 +46,11 @@ module.exports = {
     // },
     deletePlaylists: (req,res) => {
         const { id,platform } = req.params;
-        playlist.map((cur) => {
-            console.log(id,platform)
-            // console.log(cur.id,cur.platformId,cur.id.toString() + cur.platformId.toString())
-            // var string = cur.id.toString() + cur.platformId.toString();
-            // var number = parseInt(string);
-            if(+cur.id + +cur.platformId == id){
-                // console.log(id,cur.platform)
-            }
+        playlist.map((cur,ind) => {
+            console.log(cur.id,cur.ind)
         })
-        res.status(200).json(playlist);
+        res.status(500).json(playlist);
+        
     }
 }
 

@@ -41,10 +41,10 @@ class App extends Component {
     })
   }
 
-  deleteFromPlaylist(id,platform){
+  deleteFromPlaylist(id){
     axios.delete(`/api/playlists/${id}`)
     // console.log(id,platform)
-    // .then(res => this.setState({playlists: res.data}))
+    .then(res => this.setState({playlists: res.data}))
   }
 
   newPlaylist(val){
