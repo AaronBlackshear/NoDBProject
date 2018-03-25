@@ -7,6 +7,10 @@ export default class FavoritesContainer extends Component{
         super(props)
     }
 
+    gameOver(){
+        alert('Game Over!')
+    }
+
     render(){
         const { favorites,move } = this.props;
         let favoritesList = favorites.map((cur,ind) => {
@@ -20,10 +24,17 @@ export default class FavoritesContainer extends Component{
                 return <Favorites key={ind} name={cur.name} platformName={'Steam'} platformId={cur.platformId} population={cur.population} id={cur.id} favorite={favorites} move={move} /> 
             }
         })
+        
+        if(favorites.length > 5){
+            alert('Game Over!')
+        }
 
         return (
             <div className="favoritesBar">
-                <h1 className="favorite-title">Favorites:</h1>
+                <div className="favorite-title">
+                    <h1>Favorites:</h1>
+                    <h5 className="choose">Choose Carefully ;)</h5>
+                </div>
                 <div className="favorite-list">{favoritesList}</div>
             </div>
         )

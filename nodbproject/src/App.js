@@ -11,11 +11,15 @@ class App extends Component {
     super()
     this.state = {
       playlists: [],
-      favorites: []
+      favorites: [],
+      newPlaylist: '',
+      newPlatform: ''
     }
     this.addToFavorites = this.addToFavorites.bind(this);
     this.deleteFromPlaylist = this.deleteFromPlaylist.bind(this);
-    this.moveToPlaylists = this.moveToPlaylists.bind(this);
+    this.movePlaylists = this.movePlaylists.bind(this);
+    this.newPlaylist = this.newPlaylist.bind(this);
+    this.newPlatform = this.newPlatform.bind(this);
   }
 
   componentDidMount(){
@@ -30,28 +34,40 @@ class App extends Component {
     });
   }
 
-  moveToPlaylists(id,platform){
-    axios.post(`/api/playlists/${id}`, {platformId: platform, id})
+  movePlaylists(id,platform){
+    axios.post('/api/playlists', {platformId: platform, id})
     .then(res => {
       this.setState({favorites: res.data[0], playlists: res.data[1]})
     })
-    console.log(this.state.favorites.length)
   }
 
   deleteFromPlaylist(id,platform){
     axios.delete(`/api/playlists/${id}`)
-    console.log(id,platform)
+    // console.log(id,platform)
     // .then(res => this.setState({playlists: res.data}))
   }
 
+  newPlaylist(val){
+    this.setState({
+      newPlaylist: val,
+    })
+  }
+
+  newPlatform(val){
+    this.setState({
+      newPlatform: val,
+    })
+  }
+
   render() {
-    const { playlists,favorites } = this.state;
+    const { playlists,favorites,newPlatform,newPlaylist } = this.state;
+    console.log(playlists)
     return (
       <div>
         <Header array={playlists} />
         <ListContainer array={playlists} favorite={this.addToFavorites} fav={favorites} deleteItem={this.deleteFromPlaylist} />
-        <FavoritesContainer favorites={favorites} move={this.moveToPlaylists} />
-        <Create array={playlists} />
+        <FavoritesContainer favorites={favorites} move={this.movePlaylists} />
+        <Create array={playlists} newPlaylist={this.newPlaylist} newPlatform={this.newPlatform} />
       </div>
     );
   }

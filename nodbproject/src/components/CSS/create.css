@@ -5,4 +5,19 @@
     width: 15vw;
     height: 100vh;
     background-color: rgb(27, 27, 27);
+    color: white;
+    text-align: center;
+}
+
+.create-title{
+    margin-top: 2vh;
+}
+
+.input{
+    margin-bottom: 1.5vh;
+    margin-top: 7px;
+}
+
+.playlist-head{
+    margin-top: 3vh;
 }

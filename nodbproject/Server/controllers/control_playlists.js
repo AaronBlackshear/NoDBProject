@@ -27,21 +27,23 @@ module.exports = {
                 favorites.push(cur)
                 playlist.splice(ind,1)
             }
-        });
+        }
+    )
         res.status(200).send([favorites, playlist]);
         }
     },
     movePlaylists: (req,res) => {
-        const { id } = req.params
-        const { platformId } = req.body
-            playlist.forEach((cur,ind) => {
-                console.log(cur);
+        const { platformId,id } = req.body
+            favorites.filter((cur,ind) => {
             if(cur.platformId === platformId && cur.id === id){
                 playlist.push(favorites.splice(ind,1))
             }
             res.status(200).send([favorites, playlist]);
         })
     },
+    // addPlaylist: (req,res) => {
+
+    // },
     deletePlaylists: (req,res) => {
         const { id,platform } = req.params;
         playlist.map((cur) => {

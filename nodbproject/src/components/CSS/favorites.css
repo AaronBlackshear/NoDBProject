@@ -20,10 +20,14 @@
 }
 
 .favorite-list{
-    margin-top: 8vh;
+    margin-top: 10vh;
     color: white;
 }
 
 .fav{
     margin-bottom: 5vh;
+}
+
+.choose{
+    margin-left: 2vh;
 }
