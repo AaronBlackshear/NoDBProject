@@ -10,7 +10,7 @@ module.exports = {
             axios
             .get(`https://api.rocketleaguestats.com/v1/data/playlists/?apikey=${process.env.API_KEY}`)
             .then(response => {
-                playlist = response.data
+                playlist = response.data;
                 res.status(200).json(playlist)
             })
             .catch(response => res.status(500).json(response))

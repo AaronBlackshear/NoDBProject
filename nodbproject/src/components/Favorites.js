@@ -8,9 +8,9 @@ export default class Favorites extends Component{
 
     render(){
         const { name,population,platformName,platformId,id,favorite,move } = this.props;
-        return (
-            
-                <div className="favorites">
+
+        return(
+            <div className="favorites">
                 {!favorite.length ? (<div />) : (
                     <div className="fav">
                     <h3>Playlist: {name}</h3>
@@ -19,8 +19,7 @@ export default class Favorites extends Component{
                     <button onClick={() => move(id,platformId)}>Remove</button>
                     </div>
                 )}
-                </div>
-           
+            </div>
         )
     }
 }

@@ -2,8 +2,24 @@
     box-sizing: border-box;
 }
 
+.Flex-Box{
+    background-color: rgba(0, 0, 0, 0.541);
+}
+
 .listContainer{
     width: 69vw;
     position: relative;
     left: 15vw;
+}
+
+.bgimage{
+    background-image: url('./bgimg1.jpg');
+    position: fixed;
+    top: -20%;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 120%;
+    width: 100%;
+    z-index: -1;
 }

@@ -49,9 +49,7 @@ class App extends Component {
 
   createPlaylist(playl,platform){
     axios.post('/api/playlists', {playl,platform})
-    .then(res => {
-      console.log(res.data);
-      
+    .then(res => {     
       this.setState({playlists: res.data})
     })
   }

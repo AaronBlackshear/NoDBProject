@@ -5,7 +5,7 @@ export default function Header(props) {
     return (
         <div className="header">
             <h1>Rocket Lists</h1>
-            <h4>Find your favorite Rocket League Playlists on your favorite platform!</h4>
+            <p className="small-text">Find your favorite Rocket League Playlists on your favorite platform!</p>
         </div>
     )
 }
