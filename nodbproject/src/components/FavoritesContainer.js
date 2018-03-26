@@ -35,7 +35,7 @@ export default class FavoritesContainer extends Component{
         return (
             <div className="favoritesBar">
                 <div className="favorite-title">
-                    <h1>Favorites:</h1>
+                    <h1 className="fav-header">Favorites:</h1>
                     <h5 className="choose">Choose Carefully</h5>
                 </div>
                 <div className="favorite-list">{favoritesList}</div>

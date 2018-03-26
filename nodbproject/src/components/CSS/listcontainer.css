@@ -7,7 +7,7 @@
 }
 
 .listContainer{
-    width: 69vw;
+    width: 70vw;
     position: relative;
     left: 15vw;
 }
@@ -22,4 +22,8 @@
     height: 120%;
     width: 100%;
     z-index: -1;
+}
+
+@media(max-width: 786px){
+    
 }
