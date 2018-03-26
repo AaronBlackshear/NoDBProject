@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './CSS/header.css';
 
 export default function Header(props) {

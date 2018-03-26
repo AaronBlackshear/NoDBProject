@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './CSS/create.css';
 
 export default function Create({ newPlaylist,newPlatform,create,playlist,platform }) {
@@ -10,7 +10,8 @@ export default function Create({ newPlaylist,newPlatform,create,playlist,platfor
             <h3>Platform:</h3>
             <input placeholder="Enter Platform Name here..." className="input" onChange={e => newPlatform(e.target.value)} />
             <br />
-            <button onClick={() => create(playlist,platform)}>Submit</button>
+            <button className='button' onClick={() => create(playlist,platform)}>Submit</button>
+            <div className='credit'><a href='https://rocketleaguestats.com/'></a></div>
         </div>
     )
 }

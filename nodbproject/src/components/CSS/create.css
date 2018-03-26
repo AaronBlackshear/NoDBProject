@@ -7,17 +7,64 @@
     background-color: rgb(27, 27, 27);
     color: white;
     text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    line-height: 2em;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .create-title{
-    margin-top: 2vh;
+    margin-top: 6vh;
 }
 
 .input{
     margin-bottom: 1.5vh;
-    margin-top: 7px;
+    margin-top: 1vh;
+    margin-bottom: 4vh;
 }
 
 .playlist-head{
-    margin-top: 3vh;
+    margin-top: 5vh;
+}
+
+.button{
+    background-color: rgb(255, 102, 0);
+    border: none;
+    height: 4vh;
+    width: 10vw;
+    font-weight: bold;
+    margin-bottom: 8vh;
+}
+
+.button:hover{
+    background-color: rgb(27, 27, 27);
+    color: rgb(255, 102, 0);
+    border: 1px solid rgb(255, 102, 0);
+}
+
+.credit{
+    position: absolute;
+    bottom: 1.5vh;
+    right: 1.5vh;
+    background-image: url('./credit.png');
+    width: 90%;
+    height: 13%;
+    background-repeat: no-repeat;
+    opacity: .35;
+}
+
+a{
+    position: absolute;
+    bottom: 1.5vh;
+    right: 1.5vh;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    opacity: .35;
+}
+
+.credit:hover{
+    opacity: .6;
+    border: none;
+    background-color: none;
 }

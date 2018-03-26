@@ -34,17 +34,23 @@ module.exports = {
     },
     movePlaylists: (req,res) => {
         const { platformId,id } = req.body
-            favorites.filter((cur,ind) => {
-            if(cur.platformId === platformId && cur.id === id){
-                playlist.push(favorites.splice(ind,1))
+            favorites.forEach((cur,ind) => {
+            if(cur.platformId === parseInt(platformId) && cur.id === parseInt(id)){
+                playlist.push(cur)
+                favorites.splice(ind,1)
             }
             res.status(200).send([favorites, playlist]);
         })
     },
     addPlaylists: (req,res) => {
         const { playl,platform } = req.body;
-        playlist.push({playl,platform})
-        res.status(200).json(playlist)
+        if(playl === '' || platform === ''){
+            null
+        }
+        else{
+            playlist.push({playl,platform})
+            res.status(200).json(playlist)
+        }
     },
     deletePlaylists: (req,res) => {
         const { id,platformId } = req.params;
@@ -53,16 +59,3 @@ module.exports = {
         res.status(200).json(playlist);
     }
 }
-
-
-// var deleted = playlist.map((cur,ind) => {
-//     var test = +cur.id + +cur.platformId;
-//     var testIndex = playlist.findIndex(cur => cur === test)
-//     var index = playlist.splice(testIndex,1)
-//     console.log(index)
-// })
-
-
-// if(test === parseInt(id)){
-//     var testIndex = playlist.findIndex(cur => cur === test)
-// }

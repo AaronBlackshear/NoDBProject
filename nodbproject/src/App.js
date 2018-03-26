@@ -36,7 +36,7 @@ class App extends Component {
   }
 
   movePlaylists(id,platform){
-    axios.post('/api/playlists', {platformId: platform, id})
+    axios.put(`/api/playlists/${id}`, {platformId: platform, id})
     .then(res => {
       this.setState({favorites: res.data[0], playlists: res.data[1]})
     })
@@ -48,8 +48,10 @@ class App extends Component {
   }
 
   createPlaylist(playl,platform){
+    console.log(playl,platform)
     axios.post('/api/playlists', {playl,platform})
-    .then(res => {     
+    .then(res => {
+      console.log(res.data)
       this.setState({playlists: res.data})
     })
   }
@@ -72,7 +74,7 @@ class App extends Component {
       <div>
         <Header />
         <ListContainer arr={playlists} favorite={this.addToFavorites} fav={favorites} deleteItem={this.deleteFromPlaylist} />
-        <FavoritesContainer favorites={favorites} move={this.movePlaylists} />
+        <FavoritesContainer favorites={favorites} moveFav={this.movePlaylists} />
         <Create arr={playlists} newPlaylist={this.addPlaylist} newPlatform={this.addPlatform}
          create={this.createPlaylist} playlist={newPlaylist} platform={newPlatform} />
       </div>
