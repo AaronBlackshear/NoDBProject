@@ -6,7 +6,6 @@ class ListContainer extends Component {
 
     render(){
         const { favorite,arr,fav,deleteItem } = this.props;
-        // console.log(arr)
         let listContainer = arr.map((cur,ind) => {
             if(cur.platformId === 1){
                 return <Playlists key={ind} name={cur.name} platformName={'XBOX One'} platformId={cur.platformId}  
@@ -21,8 +20,8 @@ class ListContainer extends Component {
                 population={cur.population.players} id={cur.id} favorite={favorite} fav={fav} deleteItem={deleteItem} /> 
             }
             else{
-                return <Playlists key={ind} name={cur.playl} platformName={cur.platform} platformId={cur.platformId} 
-                population='1' id={cur.id} favorite={favorite} fav={fav} deleteItem={deleteItem} /> 
+                return <Playlists key={ind} name={cur.name} platformName={cur.platformId} platformId={cur.platformId} 
+                population={cur.population.players} id={cur.id} favorite={favorite} fav={fav} deleteItem={deleteItem} /> 
             }
         })
 
@@ -36,8 +35,3 @@ class ListContainer extends Component {
 }
 
 export default ListContainer;
-
-// else{
-//     return <Playlists key={ind} name={cur.playl} platformName={cur.platform} 
-//     population='1' favorite={favorite} fav={fav} deleteItem={deleteItem} /> 
-// }

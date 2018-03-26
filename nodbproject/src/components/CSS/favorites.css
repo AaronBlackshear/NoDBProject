@@ -43,6 +43,7 @@ button{
     height: 3vh;
     width: 7vw;
     font-weight: bold;
+    border-radius: 50px;
 }
 
 button:hover{

@@ -3,6 +3,7 @@ const axios = require('axios');
 let playlist = [];
 let favorites = [];
 let deletedIndex = 0;
+let newId = 50;
 
 module.exports = {
     getPlaylists: (req, res) => {
@@ -23,6 +24,7 @@ module.exports = {
         if(favorites.length < 5){
             const { platformId,id } = req.body
             playlist.forEach((cur,ind) => {
+                // console.log(cur)
             if(cur.platformId === platformId && cur.id === id){
                 favorites.push(cur)
                 playlist.splice(ind,1)
@@ -35,7 +37,7 @@ module.exports = {
     movePlaylists: (req,res) => {
         const { platformId,id } = req.body
             favorites.forEach((cur,ind) => {
-            if(cur.platformId === parseInt(platformId) && cur.id === parseInt(id)){
+            if(cur.platformId === platformId && cur.id === id){              
                 playlist.push(cur)
                 favorites.splice(ind,1)
             }
@@ -43,12 +45,13 @@ module.exports = {
         })
     },
     addPlaylists: (req,res) => {
-        const { playl,platform } = req.body;
-        if(playl === '' || platform === ''){
+        const { name, platformId } = req.body;
+        if(name === '' || platformId === ''){
             null
         }
         else{
-            playlist.push({playl,platform})
+            playlist.push({id: newId, name,platformId, population: {players: Math.floor(Math.random() * 500) + 1 }})
+            newId++;
             res.status(200).json(playlist)
         }
     },

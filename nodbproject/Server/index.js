@@ -12,7 +12,7 @@ app.get("/api/playlists", ctrlPlaylists.getPlaylists);
 // app.post('/api/playlists', ctrlPlaylists.postPlaylists);
 app.post('/api/playlists', ctrlPlaylists.addPlaylists);
 app.put('/api/playlists/:id', ctrlPlaylists.postPlaylists);
-app.put('/api/playlists/:id', ctrlPlaylists.movePlaylists);
+app.put('/api/favorites/:id', ctrlPlaylists.movePlaylists);
 app.delete(`/api/playlists/:id/:platformId`, ctrlPlaylists.deletePlaylists);
 
 app.listen(port, () => console.log(`Listening on port ${port}`))

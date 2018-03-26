@@ -7,7 +7,7 @@ import FavoritesContainer from './components/FavoritesContainer';
 
 
 class App extends Component {
-  constructor(){
+  constructor() {
     super()
     this.state = {
       playlists: [],
@@ -23,60 +23,60 @@ class App extends Component {
     this.createPlaylist = this.createPlaylist.bind(this);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     axios.get('/api/playlists')
-    .then(res => this.setState({playlists: res.data}));
+      .then(res => {
+        this.setState({ playlists: res.data });
+  
+      })
+  }
+  addToFavorites(id, platformId) {
+    axios.put(`/api/playlists/${id}`, { platformId, id })
+      .then(res => {
+        this.setState({ favorites: res.data[0], playlists: res.data[1] })
+      });
   }
 
-  addToFavorites(id,platform){
-    axios.put(`/api/playlists/${id}`, {platformId: platform, id})
-    .then(res => {
-      this.setState({favorites: res.data[0], playlists: res.data[1]})
-    });
+  movePlaylists(id, platformId) {
+    axios.put(`/api/favorites/${id}`, { platformId, id })
+      .then(res => {
+        this.setState({ favorites: res.data[0], playlists: res.data[1] })
+      })
   }
 
-  movePlaylists(id,platform){
-    axios.put(`/api/playlists/${id}`, {platformId: platform, id})
-    .then(res => {
-      this.setState({favorites: res.data[0], playlists: res.data[1]})
-    })
-  }
-
-  deleteFromPlaylist(id,platformId){
+  deleteFromPlaylist(id, platformId) {
     axios.delete(`/api/playlists/${id}/${platformId}`)
-    .then(res => this.setState({playlists: res.data}))
+      .then(res => this.setState({ playlists: res.data }))
   }
 
-  createPlaylist(playl,platform){
-    console.log(playl,platform)
-    axios.post('/api/playlists', {playl,platform})
-    .then(res => {
-      console.log(res.data)
-      this.setState({playlists: res.data})
-    })
+  createPlaylist(name, platformId) {
+    axios.post('/api/playlists', { name, platformId })
+      .then(res => {
+        this.setState({ playlists: res.data })
+      })
   }
 
-  addPlaylist(val){
+  addPlaylist(val) {
     this.setState({
       newPlaylist: val,
     })
   }
 
-  addPlatform(val){
+  addPlatform(val) {
     this.setState({
       newPlatform: val,
     })
   }
 
   render() {
-    const { playlists,favorites,newPlatform,newPlaylist } = this.state;
+    const { playlists, favorites, newPlatform, newPlaylist } = this.state;
     return (
       <div>
         <Header />
         <ListContainer arr={playlists} favorite={this.addToFavorites} fav={favorites} deleteItem={this.deleteFromPlaylist} />
         <FavoritesContainer favorites={favorites} moveFav={this.movePlaylists} />
         <Create arr={playlists} newPlaylist={this.addPlaylist} newPlatform={this.addPlatform}
-         create={this.createPlaylist} playlist={newPlaylist} platform={newPlatform} />
+          create={this.createPlaylist} playlist={newPlaylist} platform={newPlatform} />
       </div>
     );
   }

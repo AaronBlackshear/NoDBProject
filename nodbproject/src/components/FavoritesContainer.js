@@ -8,7 +8,7 @@ export default class FavoritesContainer extends Component{
     }
 
     render(){
-        const { favorites,moveFav } = this.props;
+        const { favorites=[],moveFav } = this.props;
         var favoritesList = favorites.map((cur,ind) => {
             if(cur.platformId === 1){
                 return <Favorites key={ind} name={cur.name} platformName={'XBOX One'} platformId={cur.platformId}  
@@ -18,8 +18,12 @@ export default class FavoritesContainer extends Component{
                 return <Favorites key={ind} name={cur.name} platformName={'Play Station 4'} platformId={cur.platformId}
                 population={cur.population} id={cur.id} favorite={favorites} moveFav={moveFav} /> 
             }
-            else{
+            else if(cur.platformId === 3){
                 return <Favorites key={ind} name={cur.name} platformName={'Steam'} platformId={cur.platformId} population={cur.population}
+                id={cur.id} favorite={favorites} moveFav={moveFav} /> 
+            }
+            else{
+                return <Favorites key={ind} name={cur.name} platformName={cur.platformId} platformId={cur.platformId} population={cur.population}
                 id={cur.id} favorite={favorites} moveFav={moveFav} /> 
             }
         })
@@ -32,7 +36,7 @@ export default class FavoritesContainer extends Component{
             <div className="favoritesBar">
                 <div className="favorite-title">
                     <h1>Favorites:</h1>
-                    <h5 className="choose">Choose Carefully ;)</h5>
+                    <h5 className="choose">Choose Carefully</h5>
                 </div>
                 <div className="favorite-list">{favoritesList}</div>
             </div>

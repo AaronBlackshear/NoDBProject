@@ -4,6 +4,9 @@ import './CSS/favorites.css';
 export default class Favorites extends Component{
     render(){
         const { name,population,platformName,platformId,id,favorite,moveFav } = this.props;
+
+        
+
         return(
             <div className="favorites">
                 {!favorite.length ? (<div />) : (
