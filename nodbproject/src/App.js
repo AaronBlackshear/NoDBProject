@@ -4,6 +4,7 @@ import Create from './components/Create';
 import Header from './components/Header';
 import ListContainer from './components/ListContainer';
 import FavoritesContainer from './components/FavoritesContainer';
+import './App.css'
 
 
 class App extends Component {
@@ -27,7 +28,6 @@ class App extends Component {
     axios.get('/api/playlists')
       .then(res => {
         this.setState({ playlists: res.data });
-  
       })
   }
   addToFavorites(id, platformId) {
@@ -69,14 +69,14 @@ class App extends Component {
   }
 
   render() {
-    const { playlists, favorites, newPlatform, newPlaylist } = this.state;
+    const { playlists, favorites, newPlatform, newPlaylist,toggle } = this.state;
     return (
       <div>
         <Header />
         <ListContainer arr={playlists} favorite={this.addToFavorites} fav={favorites} deleteItem={this.deleteFromPlaylist} />
-        <FavoritesContainer favorites={favorites} moveFav={this.movePlaylists} />
+        <FavoritesContainer favorites={favorites} moveFav={this.movePlaylists} toggle={toggle} />
         <Create arr={playlists} newPlaylist={this.addPlaylist} newPlatform={this.addPlatform}
-          create={this.createPlaylist} playlist={newPlaylist} platform={newPlatform} />
+        create={this.createPlaylist} playlist={newPlaylist} platform={newPlatform} toggle={toggle} />
       </div>
     );
   }

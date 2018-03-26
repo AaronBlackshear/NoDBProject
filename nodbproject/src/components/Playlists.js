@@ -13,7 +13,7 @@ export default class Playlists extends Component {
                     <h3>Platform: {platformName}</h3>
                     <h3>Population: {population}</h3>
                     <div className="button-group">
-                        <button className='orange-btn' onClick={() => favorite(id, platformId)}>Add To Favorites</button>
+                        <button className='orange-btn btn' onClick={() => favorite(id, platformId)}>Add To Favorites</button>
                         <button className='blue-btn btn' onClick={() => deleteItem(id, platformId)}>Delete</button>
                     </div>
                 </div>

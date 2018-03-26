@@ -11,10 +11,10 @@ export default class Favorites extends Component{
             <div className="favorites">
                 {!favorite.length ? (<div />) : (
                     <div className="fav">
-                    <h3>Playlist: {name}</h3>
-                    <h3>Platform: {platformName}</h3>
-                    <h3>Population: {population.players}</h3>
-                    <button className="remove" onClick={() => moveFav(id,platformId)}>Remove</button>
+                    <h3 className="fav">Playlist: {name}</h3>
+                    <h3 className="fav">Platform: {platformName}</h3>
+                    <h3 className="fav">Population: {population.players}</h3>
+                    <button className="remove fav" onClick={() => moveFav(id,platformId)}>Remove</button>
                     </div>
                 )}
             </div>

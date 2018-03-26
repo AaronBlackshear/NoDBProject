@@ -20,6 +20,7 @@ button{
     background-color: rgb(27, 27, 27);
     text-align: center;
     color: white;
+    overflow: auto;
 }
 
 .favorite-title{
@@ -68,7 +69,11 @@ button:hover{
     }
 }
 
-@media(max-height: 786px){
+@media(max-height: 600px){
+
+    .fav{
+        font-size: 12px;
+    }
 
     .favoritesBar{
         overflow: auto;
@@ -76,13 +81,18 @@ button:hover{
 
     .remove{
         min-height: 4vh;
+        font-size: 10px;
     }
 
 }
 
-@media(max-width: 470px){
+@media(max-width: 460px){
 
     .favoritesBar{
+        display: none;
+    }
+
+    .favorites{
         display: none;
     }
 
