@@ -57,7 +57,8 @@ module.exports = {
     },
     deletePlaylists: (req,res) => {
         const { id,platformId } = req.params;
-        var index = playlist.findIndex(list => list.id === parseInt(id) && list.platformId === parseInt(platformId))
+        var index = playlist.findIndex(list => list.platformId === Number(platformId) && list.id === Number(id));
+        // console.log(index)
         playlist.splice(index,1)
         res.status(200).json(playlist);
     }
